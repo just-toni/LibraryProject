@@ -171,6 +171,9 @@ submit.addEventListener('click', e => {
     }
     else status = 'unread';
     addBookToLibrary(author.value, title.value, genre.value, pages.value, status);
+    /**
+     * display as a table
+     */
     let bookSection = document.createElement('tr');
     let bookTitle = document.createElement('td');
     bookTitle.textContent = title.value;
@@ -198,6 +201,37 @@ submit.addEventListener('click', e => {
     bookSection.appendChild(bookStatus);
     bookSection.appendChild(delete_icon);
     library.appendChild(bookSection);
+
+    /**
+     * display as individual cards
+     */
+    let bookSection2 = document.createElement('section');
+    let bookTitle2 = document.createElement('p');
+    bookTitle2.textContent = `Title: ${title.value}`;
+    let bookAuthor2 = document.createElement('p');
+    bookAuthor2.textContent = `Author: ${author.value}`;
+    let bookGenre2 = document.createElement('p');
+    bookGenre2.textContent = `Genre: ${genre.value}`;
+    let bookPages2 = document.createElement('p');
+    bookPages.textContent = `Pages: ${pages.value}`;
+    let bookStatus2 = document.createElement('p');
+    let bookStatusbtn2 = document.createElement('button');
+    bookStatusbtn2.textContent = status;
+    bookStatus2.appendChild(bookStatusbtn2);
+    let delete_icon2 = document.createElement('td');
+    let delete_icon_btn2 = document.createElement('button');
+    let delete_icon_img2 = document.createElement('img');
+    delete_icon_img2.setAttribute('src', '/delete.png');
+    delete_icon_img2.setAttribute('alt', 'Delete Icon');
+    delete_icon_btn2.appendChild(delete_icon_img2);
+    delete_icon2.appendChild(delete_icon_btn2);
+    bookSection2.appendChild(bookTitle2);
+    bookSection2.appendChild(bookAuthor2);
+    bookSection2.appendChild(bookGenre2);
+    bookSection2.appendChild(bookPages2);
+    bookSection2.appendChild(bookStatus2);
+    bookSection2.appendChild(delete_icon2);
+    library.appendChild(bookSection2);
 
     delete_icon_btn.addEventListener('click', e =>{
         bookSection.textContent = '';
